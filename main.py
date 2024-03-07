@@ -3,12 +3,20 @@ from twilio.rest import Client
 
 # Using OpenWeather for Weather Data
 # USing Twilio for sms/whatsapp api message sending
+# When using whatsapp, make sure to generate and activate sandbox on twilio and use the ph no. generated from there
 
 OWM_endpoint = "https://api.openweathermap.org/data/2.5/forecast"
-api_key = "9651a557459e4de044dd8b765c26bb14"
-account_sid = "ACbfd713d5a0a391b1679791e5e80e5b1f"
-auth_token = "d13f55ec29f22a2442d817a20b10ad7a"
 
+# if you want to use it you have to make your own API key for open weather
+api_key = ""
+
+# you also have to make your own account on twilio (as well as generate a number from twilio)
+account_sid = ""
+auth_token = ""
+
+
+# The data received from the api is in 3hr intervals. cnt represents the number of 3hr intervals from 6am.
+# Change the lon and lat to your location
 parameters = {
     "lon": 101.518349,
     "lat": 3.073838,
@@ -30,9 +38,10 @@ for hour_data in weather_date["list"]:
         will_rain = True
 if will_rain:
     client = Client(account_sid, auth_token)
+    # Input the number from twilio in 'from_' and your verified number in 'to'
     message = client.messages.create(
         body='Bring an Umbrella!',
-        from_='whatsapp:+14155238886',
-        to='whatsapp:+601111774395'
+        from_='whatsapp:+',
+        to='whatsapp:+'
     )
     print(message.status)
