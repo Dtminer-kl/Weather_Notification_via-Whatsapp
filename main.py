@@ -39,7 +39,7 @@ if will_rain:
     # Input the number from twilio in 'from_' and your verified number in 'to'
     message = client.messages.create(
         body='Bring an Umbrella!',
-        from_='whatsapp:+14155238886',
-        to='whatsapp:+601111774395'
+        from_='whatsapp:+',
+        to='whatsapp:+'
     )
     print(message.status)
